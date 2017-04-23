@@ -1,19 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import Header from './components/header';
+import Home from './components/Home';
 
 const mapStateToProps = state => ({
-  appName: state.appName
+    appName: state.appName
 });
 
 class App extends React.Component {
-  render() {
-    return (
-      <Header appName={this.props.appName}/>
-      <Home />
+    render() {
+        return (
+            <div>
+                <Header appName={this.props.appName}/>
+                < Home />
+
+            </div>
         );
-  }
+    }
 }
 
 export default connect(mapStateToProps, () => ({}))(App);
