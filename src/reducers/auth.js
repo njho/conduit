@@ -1,6 +1,7 @@
 export default (state = {}, action) => {
     switch (action.type) {
         case 'LOGIN':
+            console.log('from inside the auth.js');
             return {
                 ...state,
                 inProgress: false,
@@ -12,10 +13,10 @@ export default (state = {}, action) => {
                 [action.key]: action.value
             }
         case 'ASYNC_START':
-            if (action.type === 'LOGIN') {
+            if (action.subtype === 'LOGIN') {
                 return {...state, inProgress: true}
             }
-            return;
+            break;
     }
     return state;
 };

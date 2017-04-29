@@ -11,34 +11,36 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLoad: payload => dispatch({type: 'HOME_PAGE_LOADED', payload}),
+  onLoad: (payload) =>
+      dispatch({ type: 'HOME_PAGE_LOADED', payload }),
 });
 
 class Home extends React.Component {
   componentWillMount() {
     this.props.onLoad(agent.Articles.all());
   }
+
   render() {
     return (
-      <div className="home-page">
+        <div className="home-page">
 
-        <Banner appName={this.props.appName} />
+          <Banner appName={this.props.appName} />
 
-        <div className="container page">
-          <div className="row">
-            <MainView />
+          <div className="container page">
+            <div className="row">
+              <MainView />
 
-            <div className="col-md-3">
-              <div className="sidebar">
+              <div className="col-md-3">
+                <div className="sidebar">
 
-                <p>Popular Tags</p>
+                  <p>Popular Tags</p>
 
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-      </div>
+        </div>
     );
   }
 }

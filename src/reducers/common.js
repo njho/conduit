@@ -16,7 +16,7 @@ export default (state = defaultState, action) => {
             return { ...state, redirectTo: null };
         case 'LOGIN':
 
-            console.log(action);
+            console.log('Login from the common.js');
             return {
                 ...state,
                 redirectTo: action.error ? null : '/',

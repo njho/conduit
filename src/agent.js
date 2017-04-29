@@ -30,11 +30,10 @@ const Articles = {
 
 const Auth = {
     current: () =>
-    requests.get('/user'),
-    login: (email,password) =>
-        requests.post('/users/login', {user: {email, password}})
-
-}
+        requests.get('/user'),
+    login: (email, password) =>
+        requests.post('/users/login', { user: { email, password } })
+};
 
 export default {
     Articles,
