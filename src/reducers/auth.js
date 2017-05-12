@@ -1,6 +1,7 @@
 export default (state = {}, action) => {
     switch (action.type) {
         case 'LOGIN':
+        case 'REGISTER':
             console.log('from inside the auth.js');
             return {
                 ...state,
@@ -16,6 +17,9 @@ export default (state = {}, action) => {
             if (action.subtype === 'LOGIN') {
                 return {...state, inProgress: true}
             }
+        case 'LOGIN_PAGE_UNLOADED':
+        case 'REGISTER_PAGE_UNLOADED':
+            return {};
             break;
     }
     return state;
