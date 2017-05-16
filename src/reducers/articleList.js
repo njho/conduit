@@ -3,6 +3,7 @@ export default (state = {}, action) => {
         case 'HOME_PAGE_LOADED':
             return {
                 ...state,
+                tab: action.tab,
                 articles: action.payload.articles
             };
 
@@ -18,6 +19,13 @@ export default (state = {}, action) => {
         case 'PROFILE_PAGE_UNLOADED':
         case 'PROFILE_FAVORITES_PAGE_UNLOADED':
             return {};
+        case 'CHANGE_TAB':
+            return {
+                ...state,
+                article: action.payload.articles,
+                articlesCount: action.payload.articlesCount,
+                tab: action.tab
+            }
     }
     return state;
 }

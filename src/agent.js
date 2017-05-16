@@ -35,8 +35,15 @@ const Articles = {
     del: slug =>
         requests.del(`/articles/${slug}`),
     get: slug =>
-        requests.get(`/articles/${slug}`)
-};
+        requests.get(`/articles/${slug}`),
+    byAuthor: author=>
+        requests.get(`/articles?author=${encodeURIComponent(author)}&limit=5`),
+    favoritedBy: author =>
+        requests.get(`/articles?favorited=${encodeURIComponent(author)}&limit=5`),
+    feed: () =>
+    requests.get(`/articles/feed?limit=10`)
+}
+
 
 const Auth = {
     current: () =>
@@ -63,11 +70,22 @@ const Comments = {
         requests.del(`/articles/${slug}/comments/${commentId}`)
 };
 
+const Profile = {
+    follow: username =>
+        requests.post(`/profiles/${username}/follow`),
+    get: username =>
+        requests.get(`/profiles/${username}`),
+    unfollow: username =>
+        requests.del(`/profiles/${username}/follow`)
+
+}
+
 
 export default {
     Articles,
     Auth,
     Comments,
+    Profile,
     setToken: _token => {
         token = _token;
     }

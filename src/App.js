@@ -7,7 +7,7 @@ import agent from './agent';
 
 const mapStateToProps = (state) => {
     console.log(state);
-    return {appName: state.common.appName, redirectTo: state.common.redirectTo}
+    return {appLoaded: state.common.appLoaded, appName: state.common.appName, redirectTo: state.common.redirectTo}
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -35,12 +35,21 @@ class App extends React.Component {
     }
 
     render() {
+        if (this.props.appLoaded) {
+            return (
+                <div>
+                    <Header
+                        appName={this.props.appName}
+                        currentUser={this.props.currentUser} />
+                    {this.props.children}
+                </div>
+            );
+        }
         return (
             <div>
                 <Header
-                    currentUser={this.props.currentUser}
-                    appName={this.props.appName}/>
-                {this.props.children}
+                    appName={this.props.appName}
+                    currentUser={this.props.currentUser} />
             </div>
         );
     }
